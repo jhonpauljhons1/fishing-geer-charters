@@ -1,0 +1,115 @@
+:root {
+  --azul: #004b8d;
+  --amarillo: #ffc107;
+  --menta: #c8f0e0;
+  --gris-claro: #f4f4f4;
+  --texto: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--gris-claro);
+  color: var(--texto);
+}
+
+header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--menta);
+}
+
+.logo {
+  height: 60px;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--azul);
+  font-weight: bold;
+}
+
+.hero {
+  width: 100%;
+  overflow: hidden;
+  max-height: 300px;
+}
+
+.carousel {
+  display: flex;
+  animation: slide 15s infinite linear;
+}
+
+.carousel img {
+  width: 100vw;
+  height: 300px;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-300%); }
+}
+
+section {
+  padding: 3rem 2rem;
+  background-color: var(--gris-claro);
+}
+
+section h2 {
+  color: var(--azul);
+  margin-bottom: 1rem;
+}
+
+.galeria {
+  background-color: var(--menta);
+}
+
+.carousel-loop {
+  display: flex;
+  gap: 10px;
+  animation: scroll 30s linear infinite;
+}
+
+.carousel-loop img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.whatsapp-button {
+  display: inline-block;
+  background-color: #25D366;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+footer {
+  background-color: var(--azul);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
