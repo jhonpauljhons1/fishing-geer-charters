@@ -2,7 +2,6 @@
   --azul: #004b8d;
   --amarillo: #ffc107;
   --menta: #c8f0e0;
-  --gris-claro: #f4f4f4;
   --texto: #333;
 }
 
@@ -14,17 +13,16 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--gris-claro);
+    line-height: 1.6;
   color: var(--texto);
   background-image: url('img/subtle-white-feathers.png');
   background-repeat: repeat;
-  background-color: #f4ffff; 
+  
 }
 
 
 
 header {
-  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,7 +30,6 @@ header {
   border-bottom: 2px solid var(--menta);
 }
 .site-header {
-  background-color: #fff;
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -98,7 +95,6 @@ header {
     position: fixed; /* Aquí va */
     top: 0;
     right: 0;
-    background-color: white;
     height: 100vh;
     width: 70%;
     max-width: 300px;
