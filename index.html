@@ -8,25 +8,34 @@
 </head>
 <body>
 
-  <header>
-    <img src="logo.png" alt="Fishing Geer Charters" class="logo" />
-    <nav>
-      <ul>
+<header class="site-header">
+  <div class="container">
+    <img src="img/fishing-geer-logo.jpg" alt="Fishing Geer Charters" class="logo" />
+    
+    <!-- Botón hamburguesa -->
+    <button class="menu-toggle" aria-label="Abrir menú">
+      ☰
+    </button>
+
+    <nav class="nav">
+      <ul class="nav-menu">
         <li><a href="#sobre">Sobre nosotros</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#galeria">Galería</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <section class="hero">
-    <div class="carousel">
-      <img src="img1.jpg" alt="Pesca en Loreto" />
-      <img src="img2.jpg" alt="Tour en bote" />
-      <img src="img3.jpg" alt="Aventura marina" />
-    </div>
-  </section>
+
+ <section class="hero-slider">
+  <div class="slider">
+    <div class="slide"><img src="img/pesca-en-loreto.jpg" alt="Pesca en Loreto" /></div>
+    <div class="slide"><img src="img/tour-en-bote.jpg" alt="Tour en bote" /></div>
+    <div class="slide"><img src="img/aventura-marina.jpg" alt="Aventura marina" /></div>
+  </div>
+</section>
 
   <section id="sobre">
     <h2>Bienvenidos a Fishing Geer Charters</h2>
@@ -46,12 +55,12 @@
   <section id="galeria" class="galeria">
     <h2>Galería</h2>
     <div class="carousel-loop">
-      <img src="img1.jpg" />
-      <img src="img2.jpg" />
-      <img src="img3.jpg" />
-      <img src="img1.jpg" />
-      <img src="img2.jpg" />
-      <img src="img3.jpg" />
+      <img src="img/bote.jpg"  alt ="Bote en el mar"/>
+      <img src="img/islas.jpg" alt="Islas" />
+      <img src="img/orcas.jpg"  alt="Orcas"/>
+      <img src="img/pesca-2.jpg"  alt=" Pesca"/>
+      <img src="img/pesca.jpg" alt="Pesca"/>
+      <img src="img/ballena.jpg" alt="Ballena" />
     </div>
   </section>
 

@@ -26,44 +26,125 @@ header {
   padding: 1rem 2rem;
   border-bottom: 2px solid var(--menta);
 }
-
-.logo {
-  height: 60px;
+.site-header {
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-nav ul {
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0; /* ← ya no centrado automático */
+}
+/* Botón hamburguesa */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--azul);
+}
+
+/* Menú estándar (escritorio) */
+.nav-menu {
   display: flex;
   gap: 1.5rem;
   list-style: none;
 }
 
-nav a {
+.nav-menu a {
   text-decoration: none;
   color: var(--azul);
   font-weight: bold;
+  transition: color 0.3s;
 }
 
-.hero {
+.nav-menu a:hover {
+  color: #0096c7;
+}
+
+/* Versión móvil */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: white;
+    border: 1px solid var(--menta);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    z-index: 100;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+}
+
+
+.hero-slider {
   width: 100%;
   overflow: hidden;
-  max-height: 300px;
-}
-
-.carousel {
+  position: relative;
+  height: auto;
   display: flex;
-  animation: slide 15s infinite linear;
+  justify-content: center;
 }
 
-.carousel img {
-  width: 100vw;
-  height: 300px;
-  object-fit: cover;
+.slider {
+  display: flex;
+  animation: slideAnim 12s infinite;
+  width: 300%; /* 3 imágenes */
 }
 
-@keyframes slide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-300%); }
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.slide img {
+  max-width: 90%;       /* Que no se pase del 90% del contenedor */
+  max-height: 200px;    /* Controla la altura */
+  object-fit: contain;  /* Muestra toda la imagen sin recortarla */
+  border-radius: 10px;
+}
+
+/* Animación */
+@keyframes slideAnim {
+  0% { transform: translateX(0%); }
+  33.33% { transform: translateX(0%); }
+
+  33.34% { transform: translateX(-100%); }
+  66.66% { transform: translateX(-100%); }
+
+  66.67% { transform: translateX(-200%); }
+  100% { transform: translateX(-200%); }
+}
+
 
 section {
   padding: 3rem 2rem;
@@ -113,3 +194,18 @@ footer {
   text-align: center;
   padding: 1rem;
 }
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--azul);
+  transition: transform 0.3s;
+}
+
+/* Cuando el menú esté abierto, cambia el símbolo */
+.menu-toggle.open::before {
+  content: "✖"; /* La X */
+}
+
