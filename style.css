@@ -16,7 +16,12 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--gris-claro);
   color: var(--texto);
+  background-image: url('img/subtle-white-feathers.png');
+  background-repeat: repeat;
+  background-color: #f4ffff; 
 }
+
+
 
 header {
   background-color: white;
@@ -76,8 +81,16 @@ header {
 
 /* Versión móvil */
 @media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* ocultamos menú principal */
+    flex-direction: column;
+  }
   .menu-toggle {
-    display: block;
+    display: block; /* mostramos botón hamburguesa */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   .nav {
