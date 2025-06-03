@@ -111,7 +111,11 @@ header {
   height: auto;
   display: flex;
   justify-content: center;
+  background-color: #b2ebf2; /* Azul claro estilo marino */
+  padding: 20px 0; /* Opcional, para darle espacio arriba y abajo */
 }
+
+
 
 .slider {
   display: flex;
@@ -149,6 +153,7 @@ header {
 section {
   padding: 3rem 2rem;
   background-color: var(--gris-claro);
+  
 }
 
 section h2 {
@@ -207,5 +212,21 @@ footer {
 /* Cuando el menú esté abierto, cambia el símbolo */
 .menu-toggle.open::before {
   content: "✖"; /* La X */
+}
+.social-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
 }
 
