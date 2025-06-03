@@ -94,16 +94,18 @@ header {
   }
 
   .nav {
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    background: white;
-    border: 1px solid var(--menta);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: none;
-    flex-direction: column;
-    padding: 1rem;
-    z-index: 100;
+    position: fixed; /* Aquí va */
+    top: 0;
+    right: 0;
+    background-color: white;
+    height: 100vh;
+    width: 70%;
+    max-width: 300px;
+    padding: 60px 20px 20px;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    z-index: 1000;
   }
 
   .nav-menu {
