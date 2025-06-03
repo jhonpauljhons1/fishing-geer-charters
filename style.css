@@ -13,8 +13,9 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
+  line-height: 1.6;
   color: var(--texto);
+  overflow-x: hidden; /* Evita el scroll horizontal */
   background-image: url('img/subtle-white-feathers.png');
   background-repeat: repeat;
   
@@ -22,19 +23,22 @@ body {
 
 
 
-header {
+/*header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   border-bottom: 2px solid var(--menta);
 }
+  */
 .site-header {
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .site-header .container {
+    position: relative;
+    z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between; 
@@ -75,43 +79,65 @@ header {
 .nav-menu a:hover {
   color: #0096c7;
 }
+@media (max-width: 768px) {
+  .site-header {
+    padding: 10px 8px;
+  }
+  .logo {
+    width: 90px;
+    height: 90px;
+  }
+  section {
+    padding: 1.5rem 0.5rem;
+  }
+  .carousel-loop img {
+    width: 120px;
+    height: 90px;
+  }
+}
 
 /* Versión móvil */
 @media (max-width: 768px) {
-  .nav-menu {
-    display: none; /* ocultamos menú principal */
-    flex-direction: column;
-  }
   .menu-toggle {
-    display: block; /* mostramos botón hamburguesa */
-    font-size: 2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
+    display: block;
+    z-index: 1101;
+    position: relative;
   }
-
   .nav {
     display: none;
-    position: fixed; /* Aquí va */
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 70%;
-    max-width: 300px;
-    padding: 60px 20px 20px;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-    overflow-y: auto;
-    z-index: 1000;
-  }
-
-  .nav-menu {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 80vw;
+    max-width: 320px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 20px 0 10px 0;
     flex-direction: column;
-    gap: 1rem;
+    align-items: flex-start;
+    z-index: 1100;
+    transition: all 0.3s;
   }
-
   .nav.open {
     display: flex;
   }
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+  .nav-menu a {
+    padding: 0.5rem 0;
+    width: 100%;
+  }
+}
+img, .logo, .carousel-loop img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 
@@ -240,4 +266,5 @@ footer {
 .social-icon:hover {
   transform: scale(1.1);
 }
+
 
