@@ -11,34 +11,36 @@
 <body>
 
   <!-- HEADER -->
-  <header class="site-header">
-    <div class="container d-flex justify-content-between align-items-center">
-      <img src="img/fishing geer logo.jpg" alt="Fishing Geer Charters" class="logo" />
-      
-      <button type="button" class="btn btn-outline-secondary btn-sm" id="lang-toggle">EN</button>
+ <header class="site-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg align-items-center">
+      <a class="navbar-brand" href="#">
+        <img src="img/fishing geer logo.jpg" alt="Fishing Geer Charters" class="logo" />
+      </a>
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-label="Abrir menú de navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <nav class="navbar navbar-expand-lg">
-        <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-label="Abrir menú de navegación">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainMenu">
-          <ul class="navbar-nav ms-auto nav-menu">
-            <li class="nav-item"><a class="nav-link" href="#sobre" data-i18n="about">Sobre nosotros</a></li>
-            <li class="nav-item"><a class="nav-link" href="#servicios" data-i18n="services">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#galeria" data-i18n="gallery">Galería</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacto" data-i18n="contact">Contacto</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </header>
+      <div class="collapse navbar-collapse justify-content-end" id="mainMenu">
+        <ul class="navbar-nav me-3">
+          <li class="nav-item"><a class="nav-link" href="#sobre" data-i18n="navAbout">Sobre nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicios" data-i18n="services">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#galeria" data-i18n="gallery">Galería</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto" data-i18n="contact">Contacto</a></li>
+        </ul>
+        <!-- Botón de idioma a la derecha -->
+        <button type="button" class="btn btn-outline-secondary btn-sm" id="lang-toggle">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
 
   <!-- HERO SECTION (opcional) --><!-- HERO SECTION con video de fondo -->
 <!-- HERO SECTION con video más pequeño y texto arriba -->
 <section class="hero-section bg-aqua text-center text-white py-5">
   <div class="container">
     <h1 class="display-5 fw-bold mb-4">Explora Loreto como nunca antes</h1>
-
     <div class="video-wrapper mx-auto">
       <video autoplay muted loop playsinline class="hero-video">
         <source src="vid/VID-20250604-WA0010.mp4" type="video/mp4">
@@ -55,7 +57,7 @@
 <main class="main-centered">
   <section id="sobre" class="container py-5">
     <h2 data-i18n="about">Bienvenidos a Fishing Geer Charters</h2>
-    <p data-i18n="about-text">Explora las maravillas del Mar de Cortés con nuetros tour personalizados de pesca y paseos en bote, y llevate experiencias únicas que solo Fishing Geer Charters te brinda en  Loreto, BCS.</p>
+   <p id="about-text" data-i18n="aboutText">Explora las maravillas del Mar de Cortés con nuetros tour personalizados de pesca y paseos en bote, y llevate experiencias únicas que solo Fishing Geer Charters te brinda en  Loreto, BCS.</p>
   </section>
 
   <!-- SECCIÓN SERVICIOS -->
@@ -158,8 +160,9 @@
     const translations = {
       es: {
         display: "Explora Loreto como nunca antes",
+        navAbout: "Sobre nosotros",
         about: "Bienvenidos a Fishing Geer Charters",
-        aboutText: "Explora las maravillas del Mar de Cortés con nuetros tour personalizados de pesca y paseos en bote, y llevate experiencias únicas que solo Fishing Geer Charters te brinda en  Loreto, BCS.",
+        aboutText: "Explora las maravillas del Mar de Cortés con nuestros tours personalizados de pesca y paseos en bote, y llevate experiencias únicas que solo Fishing Geer Charters te brinda en  Loreto, BCS.",
         services: "Servicios",
         tour1: "Paseos en bote",
         tour2: "Excursiones en las islas",
@@ -171,6 +174,7 @@
       },
       en: {
         display: "Explore Loreto like never before",
+        navAbout: "About Us",
         about: "Welcome to Fishing Geer Charters",
         aboutText: "Explore the wonders of the Sea of Cortez with our personalized fishing and boat tours, and take home unique experiences that only Fishing Geer Charters can offer in Loreto, BCS.",
         services: "Services",
@@ -183,15 +187,28 @@
         contact: "Contact",
       }
     };
-    let currentLang = "es";
-    langToggle.addEventListener("click", () => {
-      currentLang = currentLang === "es" ? "en" : "es";
-      langToggle.textContent = currentLang === "es" ? "EN" : "ES";
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
+   let currentLang = 'es';
+
+  langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "es" ? "en" : "es";
+    langToggle.textContent = currentLang === "es" ? "EN" : "ES";
+    updateLanguage();
+  });
+
+  function updateLanguage() {
+    const texts = document.querySelectorAll("[data-i18n]");
+    texts.forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (translations[currentLang][key]) {
         el.textContent = translations[currentLang][key];
-      });
+      }
     });
+
+    // Actualizar manualmente el h1 (que no tiene data-i18n)
+    const heroHeading = document.querySelector(".hero-section h1");
+    heroHeading.textContent = translations[currentLang].display;
+  }
+  
 
     // Modal de imagen
     document.querySelectorAll(".gallery-thumb").forEach(img => {

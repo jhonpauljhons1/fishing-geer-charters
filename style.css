@@ -2,18 +2,19 @@
   --azul: #004b8d;
   --amarillo: #ffc107;
   --menta: #c8f0e0;
-  --gris-claro: #f4f4f4;
   --texto: #333;
 }
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--gris-claro);
+  background-image: url('img/subtle-white-feathers.png');
+  background-size: repeat; /* o "repeat" si es una textura repetitiva */
+  background-attachment: fixed;
+  background-position: center;
   color: var(--texto);
 }
 
 .site-header {
-  background-color: white;
   border-bottom: 2px solid var(--menta);
   padding: 1rem 0;
 }
