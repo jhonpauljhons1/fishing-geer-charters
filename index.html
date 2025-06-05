@@ -30,12 +30,13 @@
         </ul>
       </div>
     </nav>
-    <!-- Botón idioma visible en móvil -->
-<button type="button" class="btn btn-outline-secondary btn-sm d-inline d-lg-none position-absolute top-0 end-0 m-2" id="lang-toggle-mobile">EN</button>
-
-
-    <!-- Botón de idioma visible SIEMPRE -->
-    <button type="button" class="btn btn-outline-secondary btn-sm ms-2 d-none d-lg-inline" id="lang-toggle">EN</button>
+   <!-- Aquí va el bloque del botón -->
+    <div class="d-flex align-items-center">
+  <!-- Escritorio -->
+     <button type="button" class="btn btn-outline-secondary btn-sm ms-3 d-none d-lg-inline" id="lang-toggle">EN</button>
+  <!-- Móvil -->
+      <button type="button" class="btn btn-outline-secondary btn-sm ms-3 d-inline d-lg-none" id="lang-toggle-mobile">EN</button>
+</div>
   </div>
 </header>
 
@@ -51,6 +52,8 @@
         <source src="vid/VID-20250604-WA0010.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
       </video>
+
+
     </div>
   </div>
 </section>
@@ -161,45 +164,51 @@
   <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const langToggle = document.getElementById("lang-toggle");
-    const translations = {
-      es: {
-        display: "Explora Loreto como nunca antes",
-        navAbout: "Sobre nosotros",
-        about: "Bienvenidos a Fishing Geer Charters",
-        aboutText: "Explora las maravillas del Mar de Cortés con nuestros tours personalizados de pesca y paseos en bote, y llevate experiencias únicas que solo Fishing Geer Charters te brinda en  Loreto, BCS.",
-        services: "Servicios",
-        tour1: "Paseos en bote",
-        tour2: "Excursiones en las islas",
-        tour3: "Pesca deportiva",
-        tour4: "Snorkel y avistamiento de fauna marina",
-        tour5: "Hablamos inglés",
-        gallery: "Galería",
-        contact: "Contacto",
-      },
-      en: {
-        display: "Explore Loreto like never before",
-        navAbout: "About Us",
-        about: "Welcome to Fishing Geer Charters",
-        aboutText: "Explore the wonders of the Sea of Cortez with our personalized fishing and boat tours, and take home unique experiences that only Fishing Geer Charters can offer in Loreto, BCS.",
-        services: "Services",
-        tour1: "Boat tours",
-        tour2: "Island excursions",
-        tour3: "Sport fishing",
-        tour4: "Snorkeling and marine wildlife watching",
-        tour5: "We speak English",
-        gallery: "Gallery",
-        contact: "Contact",
-      }
-    };
-   let currentLang = 'es';
+  const btnDesktop = document.getElementById("lang-toggle");
+  const btnMobile = document.getElementById("lang-toggle-mobile");
 
-  langToggle.addEventListener("click", () => {
-    currentLang = currentLang === "es" ? "en" : "es";
-    langToggle.textContent = currentLang === "es" ? "EN" : "ES";
-    updateLanguage();
-  });
+  const translations = {
+    es: {
+      display: "Explora Loreto como nunca antes",
+      navAbout: "Sobre nosotros",
+      about: "Bienvenidos a Fishing Geer Charters",
+      aboutText: "Explora las maravillas del Mar de Cortés con nuestros tours personalizados de pesca y paseos en bote, y llevate experiencias únicas que solo Fishing Geer Charters te brinda en  Loreto, BCS.",
+      services: "Servicios",
+      tour1: "Paseos en bote",
+      tour2: "Excursiones en las islas",
+      tour3: "Pesca deportiva",
+      tour4: "Snorkel y avistamiento de fauna marina",
+      tour5: "Hablamos inglés",
+      gallery: "Galería",
+      contact: "Contacto",
+    },
+    en: {
+      display: "Explore Loreto like never before",
+      navAbout: "About Us",
+      about: "Welcome to Fishing Geer Charters",
+      aboutText: "Explore the wonders of the Sea of Cortez with our personalized fishing and boat tours, and take home unique experiences that only Fishing Geer Charters can offer in Loreto, BCS.",
+      services: "Services",
+      tour1: "Boat tours",
+      tour2: "Island excursions",
+      tour3: "Sport fishing",
+      tour4: "Snorkeling and marine wildlife watching",
+      tour5: "We speak English",
+      gallery: "Gallery",
+      contact: "Contact",
+    }
+  };
 
+  // Inicializa el idioma leyendo localStorage o usa 'es' por defecto
+  let currentLang = localStorage.getItem("lang") || "es";
+
+  // Actualiza el texto de los botones para mostrar el idioma contrario como opción
+  function updateButtonsText() {
+    const toggleText = currentLang === "es" ? "EN" : "ES";
+    btnDesktop.textContent = toggleText;
+    btnMobile.textContent = toggleText;
+  }
+
+  // Actualiza el contenido traducible
   function updateLanguage() {
     const texts = document.querySelectorAll("[data-i18n]");
     texts.forEach(el => {
@@ -213,15 +222,31 @@
     const heroHeading = document.querySelector(".hero-section h1");
     heroHeading.textContent = translations[currentLang].display;
   }
-  
 
-    // Modal de imagen
-    document.querySelectorAll(".gallery-thumb").forEach(img => {
-      img.addEventListener("click", () => {
-        document.getElementById("modalImage").src = img.src;
-        new bootstrap.Modal(document.getElementById("imageModal")).show();
-      });
+  // Cambiar idioma y refrescar texto
+  function toggleLanguage() {
+    currentLang = currentLang === "es" ? "en" : "es";
+    localStorage.setItem("lang", currentLang);
+    updateLanguage();
+    updateButtonsText();
+  }
+
+  // Asignar evento a ambos botones
+  btnDesktop.addEventListener("click", toggleLanguage);
+  btnMobile.addEventListener("click", toggleLanguage);
+
+  // Al cargar la página, actualizar idioma y botones
+  updateLanguage();
+  updateButtonsText();
+
+  // Modal de imagen (igual que antes)
+  document.querySelectorAll(".gallery-thumb").forEach(img => {
+    img.addEventListener("click", () => {
+      document.getElementById("modalImage").src = img.src;
+      new bootstrap.Modal(document.getElementById("imageModal")).show();
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
