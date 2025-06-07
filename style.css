@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
   color: #333;
   background-color: #f8f9fa;
   background-image: url('img/subtle-white-feathers.png');
@@ -34,6 +35,7 @@ body {
   margin-left: 1rem;
   transition: color 0.3s;
   font-family: 'Edu SA Hand', cursive;
+  font-size: 20px;
 }
 
 .navbar-nav .nav-link:hover {
@@ -44,6 +46,7 @@ section h2 {
   color: var(--azul);
   margin-bottom: 1rem;
   font-family: 'Playpen Sans', cursive;
+  font-size: 40px;
 }
 
 .whatsapp-button {
@@ -107,6 +110,7 @@ footer {
   text-align:justify;
   padding: 2rem;
    font-family: 'Edu SA Hand', cursive;
+   font-size: 30px;
 }
 
 /* Asegúrate de que las secciones no se vean demasiado anchas */
